@@ -16,7 +16,6 @@ import { IImage } from "@/lib/database/models/image.model";
 import { formUrlQuery } from "@/lib/utils";
 
 import { Button } from "../ui/button";
-
 import { Search } from "./Search";
 
 export const Collection = ({
@@ -55,7 +54,7 @@ export const Collection = ({
 
       {images.length > 0 ? (
         <ul className="collection-list">
-          {images.map((image) => (
+          {images.map((image: IImage) => (
             <Card image={image} key={image._id} />
           ))}
         </ul>
@@ -96,7 +95,7 @@ export const Collection = ({
 
 const Card = ({ image }: { image: IImage }) => {
   return (
-    <li>
+    <li key={image._id}>
       <Link href={`/transformations/${image._id}`} className="collection-card">
         <CldImage
           src={image.publicId}
